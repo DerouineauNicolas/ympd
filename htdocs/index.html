@@ -43,13 +43,7 @@
         </ul>
 
         <div class="btn-toolbar navbar-btn navbar-right" role="toolbar">
-            <audio
-            controls
-            autoplay
-            src="http://the.ndero.ovh:8005/mpd.mp3">
-                Your browser does not support the
-                <code>audio</code> element.
-            </audio>
+
           </div>
         </div>
       </div><!--/.nav-collapse -->
@@ -64,10 +58,24 @@
         
         <div class="panel panel-primary">
           <!-- Default panel contents -->
-          <div class="panel-heading"><b id="panel-heading">Queue</b></div>
+          <div class="panel-heading"><b id="panel-heading">Click Play to listen:</b>
+            <audio
+            controls
+            autoplay
+            id=player 
+            src="https://the.ndero.ovh/radiostream/mpd.mp3">
+                Your browser does not support the
+                <code>audio</code> element.
+            </audio>
+            <button type="button" class="btn btn-default" onclick="socket.send('MPD_API_SET_PREV');">
+                <span class="glyphicon glyphicon-backward"></span>
+              </button>
+              <button type="button" class="btn btn-default" onclick="socket.send('MPD_API_SET_NEXT');">
+                <span class="glyphicon glyphicon-forward"></span>
+              </button>
+          </div>
           <div class="panel-body">
             <h1>
-              <span id="track-icon" onclick="clickPlay();" class="glyphicon glyphicon-play"></span>
               <span id="currenttrack"></span>
             </h1>
             <h4>
